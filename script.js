@@ -46,7 +46,7 @@ function detectPersonalLevel() {
 
 detectPersonalLevel();
 
-function showMyDB(hidden) {
+let showMyDB = (hidden) => {
     if(!hidden) {
         console.log(personalMovieDB);
     }
@@ -54,7 +54,7 @@ function showMyDB(hidden) {
 
 showMyDB(personalMovieDB.privat);
 
-function writeYourGenres() {
+let writeYourGenres = () => {
     for (let i = 1; i < 4; i++) {
         personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
     }
@@ -62,3 +62,15 @@ function writeYourGenres() {
 
 writeYourGenres();
 
+//======== Callback functions ===========
+
+/*function sayHello(name, callback) {
+    console.log(`Hello ${name}`);
+    callback();
+}
+
+function done() {
+    console.log('Bye bye');
+}
+
+sayHello('Maks', done);*/
