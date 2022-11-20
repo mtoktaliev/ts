@@ -74,3 +74,26 @@ function done() {
 }
 
 sayHello('Maks', done);*/
+
+
+const options = {
+    name: 'test',
+    width: 1920,
+    height: 1080,
+    colors: {
+        border: 'black',
+        bg: 'red',
+    },
+    Metod: function () {
+        console.log('Я метод объекта');
+    }
+};
+
+options.Metod();
+
+for (let key in options) {
+    console.log(`Ключ: ${key} Значение: ${options[key]}`);
+}
+
+console.log(Object.keys(options).length);
+console.log(Object.keys(options));
