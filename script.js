@@ -75,8 +75,9 @@ function done() {
 
 sayHello('Maks', done);*/
 
+//======== Object ===========
 
-const options = {
+/*const options = {
     name: 'test',
     width: 1920,
     height: 1080,
@@ -96,4 +97,23 @@ for (let key in options) {
 }
 
 console.log(Object.keys(options).length);
-console.log(Object.keys(options));
+console.log(Object.keys(options));*/
+
+//======== Array ===========
+
+/*let arr = [1, 2, 3, 4, 5];
+
+arr[0] = 9;
+
+arr.forEach(function(item) {
+    console.log (item + 1);
+})
+
+console.log(arr);
+
+let names = 'Вася, Петя, Маша';
+
+let arr = names.split(', ');
+arr.sort();
+
+console.log(arr);*/
