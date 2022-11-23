@@ -1,66 +1,76 @@
-let numberOfFilms;
-
-function start() {
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', 'Введите число');
-
-    while (numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', 'Введите число');
-    }
-}
-start();
-
 let personalMovieDB = {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
-    privat: false,
+    privat: true,
+    start() {
+        this.count = +prompt('Сколько фильмов вы уже посмотрели?', 'Введите число');
+    
+        while (this.count == null || this.count == '' || isNaN(this.count)) {
+            this.count = +prompt('Сколько фильмов вы уже посмотрели?', 'Введите число');
+        }
+    },
+    rememberMyFilms() {
+        for (let i = 0; i < 2; i++) {
+            let a = prompt('Один из последних просмотренных фильмов?'),
+                b = prompt('На сколько оцените его?');
+        
+            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+                personalMovieDB.movies[a] = b;
+            } else {
+                i--;
+            }
+        }
+    },
+    detectPersonalLevel() {
+        if (personalMovieDB.count <= 10) {
+            alert('Просмотрено довольно мало фильмов');
+        } else if (personalMovieDB.count > 10 && personalMovieDB.count <= 30) {
+            alert('Вы классический зритель');
+        } else if (personalMovieDB.count > 30) {
+            alert('Вы киноман');
+        } else {
+            alert('Произошла ошибка');
+        }
+    },
+    showMyDB(hidden) {
+        if(!hidden) {
+            console.log(personalMovieDB);
+        }
+    },
+    toggleVisibleMyDB() {
+        if (personalMovieDB.privat) {
+            personalMovieDB.privat = false;
+        } else {
+            personalMovieDB.privat = true;
+        }
+    },
+    writeYourGenres() {
+        for (let i = 1; i < 4; i++) {
+            let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+            personalMovieDB.genres[i - 1] = genre;
+            if (genre === null || genre === '') {
+                i--;
+            } else {
+                personalMovieDB.genres[i - 1] = genre;
+            }
+        }
+
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Любимый жанр ${i + 1} - это ${item}`);
+        });
+    }
 };
 
-function rememberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        let a = prompt('Один из последних просмотренных фильмов?'),
-            b = prompt('На сколько оцените его?');
-    
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-        } else {
-            i--;
-        }
-    }
-}
+console.log(personalMovieDB);
 
-rememberMyFilms();
-
-function detectPersonalLevel() {
-    if (personalMovieDB.count <= 10) {
-        alert('Просмотрено довольно мало фильмов');
-    } else if (personalMovieDB.count > 10 && personalMovieDB.count <= 30) {
-        alert('Вы классический зритель');
-    } else if (personalMovieDB.count > 30) {
-        alert('Вы киноман');
-    } else {
-        alert('Произошла ошибка');
-    }
-}
-
-detectPersonalLevel();
-
-let showMyDB = (hidden) => {
-    if(!hidden) {
-        console.log(personalMovieDB);
-    }
-}
-
-showMyDB(personalMovieDB.privat);
-
-let writeYourGenres = () => {
-    for (let i = 1; i < 4; i++) {
-        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
-    }
-}
-
-writeYourGenres();
+personalMovieDB.start();
+personalMovieDB.rememberMyFilms();
+personalMovieDB.detectPersonalLevel();
+personalMovieDB.showMyDB(personalMovieDB.privat);
+personalMovieDB.writeYourGenres();
+personalMovieDB.toggleVisibleMyDB();
 
 //======== Callback functions ===========
 
@@ -130,3 +140,17 @@ let newVideo = {};
 
 Object.assign(newVideo, video);
 console.log(newVideo);*/
+
+
+//======== Object copy ===========
+/*let soldier = {
+    health: 400,
+    armor: 100,
+};
+
+let john = {
+    health: 200,
+};
+
+Object.setPrototypeOf(john, soldier);
+console.log(john.armor);*/
