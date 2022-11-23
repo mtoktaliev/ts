@@ -117,3 +117,16 @@ let arr = names.split(', ');
 arr.sort();
 
 console.log(arr);*/
+
+
+//======== Object copy ===========
+/*let video = {
+    1: 'youtube',
+    2: 'vimeo', 
+    3: 'rutube',
+}
+
+let newVideo = {};
+
+Object.assign(newVideo, video);
+console.log(newVideo);*/
