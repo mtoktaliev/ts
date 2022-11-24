@@ -154,3 +154,4 @@ let john = {
 
 Object.setPrototypeOf(john, soldier);
 console.log(john.armor);*/
+
